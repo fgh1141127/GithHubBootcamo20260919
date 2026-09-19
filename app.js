@@ -58,7 +58,6 @@ function getEmptyMessage(){
   if(currentFilter === 'completed') return '目前沒有已完成的待辦事項。'
   return '目前沒有符合條件的待辦事項。'
 }
-
 // 產生唯一 id（簡易）
 function uid(){
   return Date.now().toString(36) + Math.random().toString(36).slice(2,6)
@@ -113,7 +112,6 @@ function setFilter(filter){
   })
   render()
 }
-
 // 新增待辦（忽略空白）
 function addTodo(text){
   const t = text.trim()
