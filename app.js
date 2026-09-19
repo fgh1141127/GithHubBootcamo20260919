@@ -8,6 +8,7 @@ const addBtn = document.getElementById('add-btn')
 const listEl = document.getElementById('todo-list')
 const countEl = document.getElementById('count')
 const emptyMsgEl = document.getElementById('empty-msg')
+const clearCompletedEl = document.getElementById('clear-completed')
 const themeToggleEl = document.getElementById('theme-toggle')
 const filterButtons = document.querySelectorAll('.filter-btn')
 
@@ -99,7 +100,9 @@ function render(){
 
   // 更新未完成計數
   const incomplete = todos.filter(t => !t.done).length
+  const completedCount = todos.filter(t => t.done).length
   countEl.textContent = `未完成: ${incomplete} 項`
+  clearCompletedEl.disabled = completedCount === 0
 }
 
 // 切換目前篩選條件
@@ -133,6 +136,16 @@ function toggleDone(id, done){
   const it = todos.find(t => t.id === id)
   if(!it) return
   it.done = !!done
+  saveTodos()
+  render()
+}
+
+// 清除所有已完成待辦
+function clearCompleted(){
+  const completedCount = todos.filter(t => t.done).length
+  if(completedCount === 0) return
+  if(!confirm('確定要清除所有已完成的待辦事項嗎？')) return
+  todos = todos.filter(t => !t.done)
   saveTodos()
   render()
 }
@@ -178,6 +191,9 @@ listEl.addEventListener('change', (e) => {
 filterButtons.forEach(button => {
   button.addEventListener('click', () => setFilter(button.dataset.filter))
 })
+
+// 清除已完成按鈕事件
+clearCompletedEl.addEventListener('click', clearCompleted)
 
 // 主題切換事件，手動選擇會覆蓋作業系統偏好
 themeToggleEl.addEventListener('click', () => {
