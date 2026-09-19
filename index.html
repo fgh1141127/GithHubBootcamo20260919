@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>待辦清單</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <header class="title-row">
+        <h1 class="title">待辦清單</h1>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false"></button>
+      </header>
+
+      <div class="input-row">
+        <input id="todo-input" type="text" placeholder="輸入待辦事項，按 Enter 或按 新增" aria-label="新增待辦輸入框">
+        <button id="add-btn">新增</button>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="待辦篩選">
+        <button class="filter-btn active" type="button" data-filter="all">全部</button>
+        <button class="filter-btn" type="button" data-filter="active">未完成</button>
+        <button class="filter-btn" type="button" data-filter="completed">已完成</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+
+      <div class="footer">
+        <p id="empty-msg" class="empty"></p>
+        <p id="count">未完成: 0 項</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
