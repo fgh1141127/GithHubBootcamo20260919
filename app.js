@@ -55,8 +55,8 @@ function getFilteredTodos(){
 // 取得清單為空時的對應提示
 function getEmptyMessage(){
   if(todos.length === 0) return '還沒有任何待辦事項,新增一個吧!'
-  if(currentFilter === 'active') return '目前沒有未完成的待辦事項。'
-  if(currentFilter === 'completed') return '目前沒有已完成的待辦事項。'
+  if(currentFilter === 'active') return '目前沒有未完成的待辦事項，其他項目可能已被目前篩選條件過濾。'
+  if(currentFilter === 'completed') return '目前沒有已完成的待辦事項，其他項目可能已被目前篩選條件過濾。'
   return '目前沒有符合條件的待辦事項。'
 }
 // 產生唯一 id（簡易）
